@@ -1,0 +1,22 @@
+install:
+	pip install --upgrade pip && pip install -r requirements/requirements.txt
+format:
+	black *.py
+lint:
+	pylint *.py
+
+#  model training, testing, package building, api dockerizing, and docker image pushing
+train: 
+	python titanic_model/train_pipeline.py  
+
+# test step - already present below this portion
+predict:
+	python titanic_model/predict.py
+
+build: pip install build
+		python -m build
+
+copy_package:
+	cp .\dist\*.whl .\titanic_prediction_API\
+
+all: install train predict build copy_package

@@ -1,1 +1,1 @@
-# AiMlOps
+Titanic_Survivor_Prediction_API_CICD
